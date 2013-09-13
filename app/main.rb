@@ -43,23 +43,7 @@ end
 #print_count_after_deleting_inactive
 # print_percentages_for('M')
 def print_state_legislator_counts
- state_names = Legislator.all.map {|l| l.state }.uniq.sort
-
- rep_count_by_state = state_names.map do |state|
-  state = Legislator.get_reps_from(state).count
- end
-
- sen_count_by_state = state_names.map do |state|
-  state = Legislator.get_senators_from(state).count
- end
-zipped_state_counts = state_names.zip(sen_count_by_state, rep_count_by_state)
-
-zipped_state_counts = zipped_state_counts.map do |state|
-  state = ["#{state[0]}: #{state[1]} Senators, #{state[2]} Representatives", state[2]]
-  end
-
-zipped_state_counts = zipped_state_counts.sort_by { |state| state[1]}.reverse
-zipped_state_counts.each {|state| puts state[0]}
+  Legislator.get_state_info
 end
 
-
+print_state_legislator_counts

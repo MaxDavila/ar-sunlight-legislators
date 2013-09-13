@@ -34,4 +34,8 @@ class Legislator < ActiveRecord::Base
     Legislator.find_all_by_gender(gender)
   end
 
+  def self.get_state_info
+    stateinfo = Legislator.where("in_office = 't' AND title = 'Rep'").group(:state).order("count(legislators.id) DESC").count
+    stateinfo.each {|key, value| puts "#{key}: 2 Senators, #{value} Representative(s)"}
+  end
 end
