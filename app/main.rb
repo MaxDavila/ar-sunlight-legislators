@@ -1,6 +1,9 @@
 require_relative '../app/models/legislator'
 require_relative '../app/models/representative'
 require_relative '../app/models/senator'
+require 'rubygems'
+require 'twitter'
+
 
 def print_legislators_from(state)
   reps = Legislator.get_reps_from(state)
@@ -49,4 +52,13 @@ def print_state_legislator_counts
 end
 
 #print_state_legislator_counts
-p Senator.all
+# p Senator.all
+p Twitter.user_timeline("#{Representative.first.twitter_id}")
+
+client = Twitter.configure do |config|
+  config.consumer_key        = "Dlo0OXRv1lqyJ1AUmcF9w"
+  config.consumer_secret     = "Z9PH3ehs0ib8riTbJt63VGumOVlONc7ddHCSmSerFpQ"
+  config.oauth_token        = "181729622-blWDmAawcGzd3IIrtaypF6dUzXhJRDdr976Drl3m"
+  config.oauth_token_secret = "yu2NDcwnGGtjtaYYy8eWHGCFfin7LZQbYWIptC0v6A"
+end
+

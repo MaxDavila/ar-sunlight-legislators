@@ -38,4 +38,9 @@ class Legislator < ActiveRecord::Base
     stateinfo = Legislator.where("in_office = 't' AND title = 'Rep'").group(:state).order("count(legislators.id) DESC").count
     stateinfo.each {|key, value| puts "#{key}: 2 Senators, #{value} Representative(s)"}
   end
+
+  def self.get_twitter_id
+    Legislator.find()
+  end
+
 end
