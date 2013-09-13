@@ -1,4 +1,6 @@
 require_relative '../app/models/legislator'
+require_relative '../app/models/representative'
+require_relative '../app/models/senator'
 
 def print_legislators_from(state)
   reps = Legislator.get_reps_from(state)
@@ -46,4 +48,5 @@ def print_state_legislator_counts
   Legislator.get_state_info
 end
 
-print_state_legislator_counts
+#print_state_legislator_counts
+p Senator.all
