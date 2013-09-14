@@ -53,7 +53,6 @@ end
 
 #print_state_legislator_counts
 # p Senator.all
-p Twitter.user_timeline("#{Representative.first.twitter_id}")
 
 client = Twitter.configure do |config|
   config.consumer_key        = "Dlo0OXRv1lqyJ1AUmcF9w"
@@ -61,4 +60,7 @@ client = Twitter.configure do |config|
   config.oauth_token        = "181729622-blWDmAawcGzd3IIrtaypF6dUzXhJRDdr976Drl3m"
   config.oauth_token_secret = "yu2NDcwnGGtjtaYYy8eWHGCFfin7LZQbYWIptC0v6A"
 end
+
+Twitter.user_timeline("#{Representative.first.twitter_id}").each { |tweet| p tweet.text }
+
 
